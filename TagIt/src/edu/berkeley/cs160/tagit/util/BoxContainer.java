@@ -1,4 +1,4 @@
-package edu.berkeley.cs160.tagit;
+package edu.berkeley.cs160.tagit.util;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ public class BoxContainer {
 	/**
 	 * getBoxContainer() returns the the BoxContainer for the app/
 	 */
-	public BoxContainer getBoxContainer() {
+	public static BoxContainer getBoxContainer() {
 		if(singleton == null) {
-			this.singleton = new BoxContainer();
+			singleton = new BoxContainer();
 		}
 		return singleton;
 	}
@@ -40,7 +40,7 @@ public class BoxContainer {
 	 * @param tagPicture - File for the picture of the tag
 	 * @param contentsPicture - File for the picture of the contents
 	 */
-	public void addBox(String location, ArrayList<String> contents, File tagPicture, File contentsPicture) {
+	public void addBox(String location, ArrayList<String> contents, String tagPicture, String contentsPicture) {
 		if(contents == null) {
 			contents = new ArrayList<String>();
 		}

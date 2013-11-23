@@ -1,7 +1,8 @@
-package edu.berkeley.cs160.tagit;
+package edu.berkeley.cs160.tagit.util;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * 
@@ -12,8 +13,8 @@ public class Box {
 	
 	private String location;
 	private ArrayList<String> contents;
-	private File tagPicture;
-	private File contentsPicture;
+	private String tagPicturePath;
+	private String contentsPicturePath;
 	private int boxID;
 	
 	private static int idCounter = 0;
@@ -21,18 +22,20 @@ public class Box {
 	/**
 	 * Creates a new Box object with a unique ID.
 	 */
-	public Box() {
+	protected Box() {
 		this.boxID = idCounter;
 		this.contents = new ArrayList<String>();
 		idCounter++;
 	}
 	
-	public Box(String location, ArrayList<String> contents, File tagPicture, File contentsPicture) {
+	protected Box(String location, ArrayList<String> contents, String tagPicture, String contentsPicture) {
 		this.location = location;
 		this.contents = contents;
-		this.tagPicture = tagPicture;
-		this.contentsPicture = contentsPicture;
+		this.tagPicturePath = tagPicture;
+		this.contentsPicturePath = contentsPicture;
 		this.boxID = idCounter;
+		
+		//Collections.sort(this.contents);
 		
 		idCounter++;
 	}
@@ -53,6 +56,7 @@ public class Box {
 	 */
 	public void addContents(String item) {
 		this.contents.add(item);
+		//Collections.sort(this.contents);
 	}
 	
 	/**
@@ -62,6 +66,7 @@ public class Box {
 	 */
 	public void removeContents(String item) {
 		this.contents.remove(item);
+		//Collections.sort(this.contents);
 	}
 	
 	/**
@@ -69,8 +74,8 @@ public class Box {
 	 * 
 	 * @param f		File containing image bitmap
 	 */
-	public void addTagPicture(File f) {
-		this.tagPicture = f;
+	public void addTagPicture(String path) {
+		this.tagPicturePath = path;
 	}
 	
 	/**
@@ -78,8 +83,8 @@ public class Box {
 	 * 
 	 * @param f		File containing image bitmap
 	 */
-	public void addContentsPicture(File f) {
-		this.contentsPicture = f;
+	public void addContentsPicture(String path) {
+		this.contentsPicturePath = path;
 	}
 	
 	public String getLocation() {
@@ -90,15 +95,27 @@ public class Box {
 		return this.contents;
 	}
 	
+	public String getContentsString() {
+		String result = "";
+		for(int i = 0; i < this.contents.size(); i++) {
+			if(i == (this.contents.size() - 1)) {
+				result += this.contents.get(i);
+			} else {
+				result += this.contents.get(i) + ", ";
+			}
+		}
+		return result;
+	}
+	
 	public int getID() {
 		return this.boxID;
 	}
 	
-	public File getTagPicture() {
-		return this.tagPicture;
+	public String getTagPicturePath() {
+		return this.tagPicturePath;
 	}
 	
-	public File getContentsPicture() {
-		return this.contentsPicture;
+	public String getContentsPicturePath() {
+		return this.contentsPicturePath;
 	}
 }
