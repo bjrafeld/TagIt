@@ -55,7 +55,7 @@ public class AddBoxFragment extends Fragment {
 	private ArrayList<String> contents = null;
 	private String tagPicturePath = null, contentsPicturePath = null;
 	
-	private BoxContainer boxContainer = BoxContainer.getBoxContainer();
+	private BoxContainer boxContainer = BoxContainer.getInstance();
 	
 	private ImageButton tagImageView;
 	private ImageButton contentsImageView;
@@ -103,7 +103,7 @@ public class AddBoxFragment extends Fragment {
     	}
     	
     	//Should be changed if not using EditText for Contents
-    	EditText contentView = (EditText) v;
+    	EditText contentView = (EditText) v.findViewById(R.id.locationText);
     	contents.add(contentView.getText().toString());
     }
     

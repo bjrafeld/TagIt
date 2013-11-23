@@ -24,7 +24,7 @@ public class BoxContainer {
 	/**
 	 * getBoxContainer() returns the the BoxContainer for the app/
 	 */
-	public static BoxContainer getBoxContainer() {
+	public static BoxContainer getInstance() {
 		if(singleton == null) {
 			singleton = new BoxContainer();
 		}
