@@ -2,7 +2,7 @@ package edu.berkeley.cs160.adapter.TabAdapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import edu.berkeley.cs160.tagit.AddBoxFragment;
 import edu.berkeley.cs160.tagit.BoxesFragment;
 import edu.berkeley.cs160.tagit.SearchFragment;
@@ -14,7 +14,7 @@ import edu.berkeley.cs160.tagit.SearchFragment;
  * Last Edited by: Brendan Rafeld
  * Last Edited: 11/22/13
  */
-public class TabAdapter extends FragmentPagerAdapter {
+public class TabAdapter extends FragmentStatePagerAdapter {
 	
 	public static final int BOX_FRAGMENT = 0;
 	public static final int ADD_BOX_FRAGMENT = 1;

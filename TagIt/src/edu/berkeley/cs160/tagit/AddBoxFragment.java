@@ -26,8 +26,10 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -55,11 +57,32 @@ public class AddBoxFragment extends Fragment {
 	
 	private BoxContainer boxContainer = BoxContainer.getBoxContainer();
 	
-	private ImageView tagImageView;
-	private ImageView contentsImageView;
+	private ImageButton tagImageView;
+	private ImageButton contentsImageView;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	View v = inflater.inflate(R.layout.fragment_add_box, container, false);
+    	
+    	tagImageView = (ImageButton) v.findViewById(R.id.tagImageButton);
+    	contentsImageView = (ImageButton) v.findViewById(R.id.contentsImageButton);
+    	
+    	//Can't add Fragment methods to view in XML
+    	tagImageView.setOnClickListener(
+    		new OnClickListener() {
+    			public void onClick(View v) {
+    				takeTagPicture();
+    			}
+    		}
+    	);
+    	
+    	contentsImageView.setOnClickListener(
+        		new OnClickListener() {
+        			public void onClick(View v) {
+        				takeContentsPicture();
+        			}
+        		}
+        	);
     	
     	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
 			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
@@ -67,7 +90,7 @@ public class AddBoxFragment extends Fragment {
 			mAlbumStorageDirFactory = new BaseAlbumDirFactory();
 		}
     	
-        return inflater.inflate(R.layout.fragment_add_box, container, false);
+        return v;
     }
     
     /**
@@ -97,7 +120,7 @@ public class AddBoxFragment extends Fragment {
      * On CLick action for Tag Picture
      * @param v
      */
-    public void takeTagPicture(View v) {
+    public void takeTagPicture() {
     	if(tagPicturePath != null) {
     		File deleted = new File(tagPicturePath);
     		deleted.delete();
@@ -118,7 +141,7 @@ public class AddBoxFragment extends Fragment {
      * On Click for Contents Picture
      * @param v
      */
-    public void takeContentsPicture(View v) {
+    public void takeContentsPicture() {
     	if(contentsPicturePath != null) {
     		File deleted = new File(contentsPicturePath);
     		deleted.delete();
@@ -228,50 +251,27 @@ public class AddBoxFragment extends Fragment {
 	}
     
     private void setTagPicture() {
-    	/* There isn't enough memory to open up more than a couple camera photos */
-		/* So pre-scale the target bitmap into which the file is decoded */
-
-		/* Get the size of the ImageView */
-		int targetW = tagImageView.getWidth();
-		int targetH = tagImageView.getHeight();
-
-		/* Get the size of the image */
-		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-		bmOptions.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(tagPicturePath, bmOptions);
-		int photoW = bmOptions.outWidth;
-		int photoH = bmOptions.outHeight;
-		
-		/* Figure out which way needs to be reduced less */
-		int scaleFactor = 1;
-		if ((targetW > 0) || (targetH > 0)) {
-			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
-		}
-
-		/* Set bitmap options to scale the image decode target */
-		bmOptions.inJustDecodeBounds = false;
-		bmOptions.inSampleSize = scaleFactor;
-		bmOptions.inPurgeable = true;
-
-		/* Decode the JPEG file into a Bitmap */
-		Bitmap bitmap = BitmapFactory.decodeFile(tagPicturePath, bmOptions);
-		
-		/* Associate the Bitmap to the ImageView */
-		tagImageView.setImageBitmap(bitmap);
+    	setPicture(tagPicturePath, tagImageView);
+		savePicture(tagPicturePath);
     }
     
     private void setContentsPicture() {
+    	setPicture(contentsPicturePath, contentsImageView);
+		savePicture(contentsPicturePath);
+    }
+    
+    private void setPicture(String path, ImageView imageView) {
     	/* There isn't enough memory to open up more than a couple camera photos */
 		/* So pre-scale the target bitmap into which the file is decoded */
 
 		/* Get the size of the ImageView */
-		int targetW = contentsImageView.getWidth();
-		int targetH = contentsImageView.getHeight();
+		int targetW = imageView.getWidth();
+		int targetH = imageView.getHeight();
 
 		/* Get the size of the image */
 		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
 		bmOptions.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(contentsPicturePath, bmOptions);
+		BitmapFactory.decodeFile(path, bmOptions);
 		int photoW = bmOptions.outWidth;
 		int photoH = bmOptions.outHeight;
 		
@@ -287,10 +287,18 @@ public class AddBoxFragment extends Fragment {
 		bmOptions.inPurgeable = true;
 
 		/* Decode the JPEG file into a Bitmap */
-		Bitmap bitmap = BitmapFactory.decodeFile(contentsPicturePath, bmOptions);
+		Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
 		
 		/* Associate the Bitmap to the ImageView */
-		contentsImageView.setImageBitmap(bitmap);
+		imageView.setImageBitmap(bitmap);
+    }
+    
+    private void savePicture(String path) {
+    	Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+		File f = new File(path);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.getActivity().sendBroadcast(mediaScanIntent);
     }
     
     //Possible Bug: Orientation change may lost picture (Make sure to lock orientation)
