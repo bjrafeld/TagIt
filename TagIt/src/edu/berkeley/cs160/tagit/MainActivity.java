@@ -88,4 +88,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             icon = i;
         }
     }
+    
+    public void selectPage(int page) {
+    	viewPager.setCurrentItem(page);
+    }
 }

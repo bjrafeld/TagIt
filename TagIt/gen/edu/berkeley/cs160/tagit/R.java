@@ -27,8 +27,10 @@ public final class R {
         public static final int search=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080002;
+        public static final int action_settings=0x7f080004;
         public static final int pager=0x7f080000;
+        public static final int tab_icon=0x7f080002;
+        public static final int tab_label=0x7f080003;
         public static final int textView=0x7f080001;
     }
     public static final class layout {
@@ -37,6 +39,7 @@ public final class R {
         public static final int fragment_add_box=0x7f030002;
         public static final int fragment_boxes=0x7f030003;
         public static final int fragment_search=0x7f030004;
+        public static final int tab=0x7f030005;
     }
     public static final class menu {
         public static final int camera=0x7f070000;

@@ -14,6 +14,8 @@ import edu.berkeley.cs160.tagit.util.FroyoAlbumDirFactory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
@@ -52,11 +55,11 @@ public class AddBoxFragment extends Fragment {
 	
 	private BoxContainer boxContainer = BoxContainer.getBoxContainer();
 	
-	private ViewPager viewPager;
+	private ImageView tagImageView;
+	private ImageView contentsImageView;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	viewPager = (ViewPager) getView().findViewById(R.id.pager);
     	
     	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
 			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
@@ -96,7 +99,8 @@ public class AddBoxFragment extends Fragment {
      */
     public void takeTagPicture(View v) {
     	if(tagPicturePath != null) {
-    		//delete photo
+    		File deleted = new File(tagPicturePath);
+    		deleted.delete();
     	}
     	File f = null;
     	try {
@@ -116,7 +120,8 @@ public class AddBoxFragment extends Fragment {
      */
     public void takeContentsPicture(View v) {
     	if(contentsPicturePath != null) {
-    		//delete photo
+    		File deleted = new File(contentsPicturePath);
+    		deleted.delete();
     	}
     	File f = null;
     	try {
@@ -146,7 +151,8 @@ public class AddBoxFragment extends Fragment {
     		toast.show();
     	}
     	boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
-    	viewPager.setCurrentItem(TabAdapter.BOX_FRAGMENT);
+    	MainActivity a = (MainActivity) getActivity();
+    	a.selectPage(TabAdapter.BOX_FRAGMENT);
     }
     
     private void takePicture(Uri fileURI, int resultCode) {
@@ -222,14 +228,72 @@ public class AddBoxFragment extends Fragment {
 	}
     
     private void setTagPicture() {
-  
+    	/* There isn't enough memory to open up more than a couple camera photos */
+		/* So pre-scale the target bitmap into which the file is decoded */
+
+		/* Get the size of the ImageView */
+		int targetW = tagImageView.getWidth();
+		int targetH = tagImageView.getHeight();
+
+		/* Get the size of the image */
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(tagPicturePath, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+		
+		/* Figure out which way needs to be reduced less */
+		int scaleFactor = 1;
+		if ((targetW > 0) || (targetH > 0)) {
+			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
+		}
+
+		/* Set bitmap options to scale the image decode target */
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		/* Decode the JPEG file into a Bitmap */
+		Bitmap bitmap = BitmapFactory.decodeFile(tagPicturePath, bmOptions);
+		
+		/* Associate the Bitmap to the ImageView */
+		tagImageView.setImageBitmap(bitmap);
     }
     
     private void setContentsPicture() {
-    	
+    	/* There isn't enough memory to open up more than a couple camera photos */
+		/* So pre-scale the target bitmap into which the file is decoded */
+
+		/* Get the size of the ImageView */
+		int targetW = contentsImageView.getWidth();
+		int targetH = contentsImageView.getHeight();
+
+		/* Get the size of the image */
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(contentsPicturePath, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+		
+		/* Figure out which way needs to be reduced less */
+		int scaleFactor = 1;
+		if ((targetW > 0) || (targetH > 0)) {
+			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
+		}
+
+		/* Set bitmap options to scale the image decode target */
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		/* Decode the JPEG file into a Bitmap */
+		Bitmap bitmap = BitmapFactory.decodeFile(contentsPicturePath, bmOptions);
+		
+		/* Associate the Bitmap to the ImageView */
+		contentsImageView.setImageBitmap(bitmap);
     }
     
-    
+    //Possible Bug: Orientation change may lost picture (Make sure to lock orientation)
     
     
 }
