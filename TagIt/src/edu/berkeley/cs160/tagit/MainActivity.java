@@ -2,13 +2,13 @@ package edu.berkeley.cs160.tagit;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import edu.berkeley.cs160.adapter.TabAdapter.TabAdapter;
 
 import static android.app.ActionBar.Tab;
@@ -38,9 +38,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Generate the tabs
         for (TabData t : tabData) {
             Tab tab = actionBar.newTab();
-            tab.setText(t.title);
-//            tab.setIcon(t.icon);
             tab.setTabListener(this);
+
+            View tabView = getLayoutInflater().inflate(R.layout.tab, null);
+            tab.setCustomView(tabView);
+
+            ImageView icon = (ImageView)tabView.findViewById(R.id.tab_icon);
+            TextView title = (TextView)tabView.findViewById(R.id.tab_label);
+
+            icon.setImageResource(t.icon);
+            title.setText(t.title);
 
             actionBar.addTab(tab);
         }
