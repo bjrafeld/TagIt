@@ -133,7 +133,7 @@ public class AddBoxActivity extends Activity {
      */
     public void removeContent(View v) {
         View itemView = (RelativeLayout)v.getParent();
-        ((LinearLayout)itemView.getParent()).removeView(itemView);
+        itemView.setVisibility(View.GONE);
     	contents.remove(itemView.findViewById(R.id.text));
     }
     /**
@@ -149,6 +149,7 @@ public class AddBoxActivity extends Activity {
     		 f = setUpPhotoFile(CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE);
     		 tagPicturePath = f.getAbsolutePath();
     		 takePicture(Uri.fromFile(f), CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE);
+            ((TextView)findViewById(R.id.tag_photo_label)).setVisibility(View.INVISIBLE);
     	} catch (IOException e) {
     		e.printStackTrace();
 			f = null;
@@ -169,7 +170,8 @@ public class AddBoxActivity extends Activity {
     		 f = setUpPhotoFile(CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE);
     		 contentsPicturePath = f.getAbsolutePath();
     		 takePicture(Uri.fromFile(f), CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE);
-    	} catch (IOException e) {
+            ((TextView)findViewById(R.id.contents_photo_label)).setVisibility(View.INVISIBLE);
+        } catch (IOException e) {
     		e.printStackTrace();
 			f = null;
 			tagPicturePath = null;

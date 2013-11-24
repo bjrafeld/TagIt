@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_camera">CameraActivity</string>
     <string name="action_add_box">Add Box</string>
+    <string name="contents_photo_label">Take Contents\nPhoto</string>
+    <string name="tag_photo_label">Take Tag\nPhoto</string>
     <color name="aaron_blue">#4680D4</color>
 
 </resources>
