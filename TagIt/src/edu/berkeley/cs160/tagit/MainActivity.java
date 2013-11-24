@@ -51,7 +51,7 @@ public class MainActivity extends FragmentActivity {
         View v = inflator.inflate(R.layout.action_bar, null);
 
         addBox = (ImageButton)v.findViewById(R.id.right_button);
-        addBox.setImageResource(R.drawable.box);
+        addBox.setImageResource(R.drawable.new_box);
 
         search = (ImageButton)v.findViewById(R.id.left_button);
         search.setImageResource(R.drawable.search);
