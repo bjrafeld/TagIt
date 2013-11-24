@@ -112,6 +112,11 @@ public class AddBoxActivity extends Activity {
     	
     	EditText newContentsItem = (EditText) findViewById(R.id.newContentText);
         String text = newContentsItem.getText().toString();
+        if(text.matches("")) {
+        	Toast toast = Toast.makeText(this, "You must enter an item before adding.", Toast.LENGTH_SHORT);
+    		toast.show();
+    		return;
+        }
     	contents.add(text);
         newContentsItem.setText("");
 
@@ -183,7 +188,7 @@ public class AddBoxActivity extends Activity {
      * @param v
      */
     public void saveBox(View v) {
-    	if(((EditText)findViewById(R.id.location)).getText() == null) {
+    	if(((EditText)findViewById(R.id.location)).getText().toString().matches("")) {
     		Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	} else if(tagPicturePath == null) {
