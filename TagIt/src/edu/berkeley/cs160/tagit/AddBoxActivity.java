@@ -82,9 +82,17 @@ public class AddBoxActivity extends Activity {
     	EditText newContentsItem = (EditText) findViewById(R.id.newContentText);
         String text = newContentsItem.getText().toString();
     	contents.add(text);
+        newContentsItem.setText("");
 
         View itemView = LayoutInflater.from(getBaseContext()).inflate(R.layout.content_item, null);
         ((TextView)itemView.findViewById(R.id.text)).setText(text);
+        ((ImageButton)itemView.findViewById(R.id.removeContentItem)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeContent(view);
+            }
+        });
+
         contentsList.addView(itemView);
     }
     
@@ -93,10 +101,10 @@ public class AddBoxActivity extends Activity {
      * @param v
      */
     public void removeContent(View v) {
-    	EditText contentView = (EditText) v;
-    	contents.remove(contentView.getText().toString());
+        View itemView = (RelativeLayout)v.getParent();
+        ((LinearLayout)itemView.getParent()).removeView(itemView);
+    	contents.remove(itemView.findViewById(R.id.text));
     }
-    
     /**
      * On CLick action for Tag Picture
      */
