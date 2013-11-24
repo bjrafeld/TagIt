@@ -37,8 +37,7 @@ import android.view.ViewGroup;
  * Last Edited: 11/22/13
  */
 public class AddBoxActivity extends Activity {
-    private ImageButton back;
-	
+
 	private static final int CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE = 200;
 	
@@ -48,7 +47,6 @@ public class AddBoxActivity extends Activity {
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 	
 	/* Box related fields */
-	private String location;
 	private ArrayList<String> contents = null;
 	private String tagPicturePath = null, contentsPicturePath = null;
 	
@@ -57,6 +55,8 @@ public class AddBoxActivity extends Activity {
 	private ImageButton tagImageView;
 	private ImageButton contentsImageView;
     private LinearLayout contentsList;
+    private ImageButton back;
+    private EditText addContentField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +65,9 @@ public class AddBoxActivity extends Activity {
         tagImageView = (ImageButton) findViewById(R.id.tagImageButton);
         contentsImageView = (ImageButton) findViewById(R.id.contentsImageButton);
         contentsList = (LinearLayout) findViewById(R.id.contents);
+        addContentField = (EditText) findViewById(R.id.newContentText);
+
+        contents = new ArrayList<String>();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
             mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
@@ -106,10 +109,6 @@ public class AddBoxActivity extends Activity {
      * @param v
      */
     public void addContent(View v) {
-    	if(contents == null) {
-    		contents = new ArrayList<String>();
-    	}
-    	
     	EditText newContentsItem = (EditText) findViewById(R.id.newContentText);
         String text = newContentsItem.getText().toString();
         if(text.matches("")) {
@@ -188,7 +187,14 @@ public class AddBoxActivity extends Activity {
      * @param v
      */
     public void saveBox(View v) {
-    	if(((EditText)findViewById(R.id.location)).getText().toString().matches("")) {
+        String unAddedContent = addContentField.getText().toString().trim();
+        String location = ((EditText)findViewById(R.id.location)).getText().toString().trim();
+
+        if (!unAddedContent.equals("")) {
+            contents.add(unAddedContent);
+        }
+
+    	if(location.matches("")) {
     		Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	} else if(tagPicturePath == null) {
