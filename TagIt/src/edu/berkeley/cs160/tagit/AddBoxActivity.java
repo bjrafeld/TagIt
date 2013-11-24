@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.widget.*;
 import edu.berkeley.cs160.tagit.util.AlbumStorageDirFactory;
 import edu.berkeley.cs160.tagit.util.BaseAlbumDirFactory;
 import edu.berkeley.cs160.tagit.util.BoxContainer;
@@ -25,10 +26,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 /**
  * Created by: Daniel
@@ -56,6 +53,7 @@ public class AddBoxActivity extends Activity {
 	
 	private ImageButton tagImageView;
 	private ImageButton contentsImageView;
+    private LinearLayout contentsList;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +61,7 @@ public class AddBoxActivity extends Activity {
 
         tagImageView = (ImageButton) findViewById(R.id.tagImageButton);
         contentsImageView = (ImageButton) findViewById(R.id.contentsImageButton);
+        contentsList = (LinearLayout) findViewById(R.id.contents);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
             mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
@@ -80,9 +79,13 @@ public class AddBoxActivity extends Activity {
     		contents = new ArrayList<String>();
     	}
     	
-    	//Should be changed if not using EditText for Contents
-    	EditText contentView = (EditText) v.findViewById(R.id.locationText);
-    	contents.add(contentView.getText().toString());
+    	EditText newContentsItem = (EditText) findViewById(R.id.newContentText);
+        String text = newContentsItem.getText().toString();
+    	contents.add(text);
+
+        View itemView = LayoutInflater.from(getBaseContext()).inflate(R.layout.content_item, null);
+        ((TextView)itemView.findViewById(R.id.text)).setText(text);
+        contentsList.addView(itemView);
     }
     
     /**
@@ -139,7 +142,7 @@ public class AddBoxActivity extends Activity {
      * @param v
      */
     public void saveBox(View v) {
-    	if(location == null) {
+    	if(((EditText)findViewById(R.id.location)).getText() == null) {
     		Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	} else if(tagPicturePath == null) {
@@ -148,11 +151,10 @@ public class AddBoxActivity extends Activity {
     	} else if(contentsPicturePath == null) {
     		Toast toast = Toast.makeText(this, "You must take a picture of the Contents before saving.", Toast.LENGTH_SHORT);
     		toast.show();
-    	}
-    	boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
-    	finish();
-//        MainActivity a = (MainActivity) getActivity();
-//    	a.selectPage(TabAdapter.BOX_FRAGMENT);
+    	} else {
+            boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
+            finish();
+        }
     }
     
     private void takePicture(Uri fileURI, int resultCode) {

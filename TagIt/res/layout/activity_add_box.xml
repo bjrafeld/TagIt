@@ -28,32 +28,64 @@
                     android:layout_alignBottom="@+id/contentsImageButton" android:layout_marginRight="-15dp"
                     android:layout_marginBottom="-15dp"/>
         </RelativeLayout>
-        <LinearLayout
-                android:orientation="vertical"
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Box Location:"
+                android:id="@+id/locationLabel"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="7dp"
+                android:textSize="20sp"/>
+        <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:layout_marginTop="7dp">
-            <TextView
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/location"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="This box is in..."/>
+        <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contents:"
+                android:id="@+id/contentsLabel"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="20sp"/>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:id="@+id/contents">
+        </LinearLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="15dp">
+            <ImageButton
+                    style="?android:borderlessButtonStyle"
+                    android:src="@drawable/plus"
+                    android:id="@+id/addContentItem"
                     android:layout_height="wrap_content"
-                    android:text="Box Location:"
-                    android:id="@+id/locationLabel" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
-                    android:textSize="16sp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:onClick="addContent"
+                    android:layout_centerVertical="true"/>
             <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/locationText" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Contents:" android:id="@+id/contentsLabel" android:layout_marginLeft="15dp"
-                      android:layout_marginRight="15dp" android:textSize="16sp"/>
-            <TableLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-            </TableLayout>
-        </LinearLayout>
+                    android:layout_toLeftOf="@id/addContentItem"
+                    android:id="@+id/newContentText"
+                    android:layout_marginTop="15dp"
+                    android:hint="Add item"
+                    android:layout_centerVertical="true"/>
+        </RelativeLayout>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save Box"
-                android:id="@+id/button" android:layout_gravity="center_horizontal"/>
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="saveBox"/>
     </LinearLayout>
 </ScrollView>
