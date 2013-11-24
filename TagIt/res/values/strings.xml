@@ -7,6 +7,8 @@
     <string name="action_add_box">Add Box</string>
     <string name="contents_photo_label">Take Contents\nPhoto</string>
     <string name="tag_photo_label">Take Tag\nPhoto</string>
+    <string name="empty_message">You don\'t have any boxes yet :(\n\nTap the box in the upper left column to add one.
+    </string>
     <color name="aaron_blue">#4680D4</color>
 
 </resources>

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends FragmentActivity {
     private ImageButton addBox, search;
     private BoxArrayAdapter adapter;
+    private ListView listView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ public class MainActivity extends FragmentActivity {
         addBox.setOnClickListener(actionBarListener);
         search.setOnClickListener(actionBarListener);
 
-        ListView listView = (ListView)findViewById(R.id.list_view);
         ArrayList<Box> boxes = BoxContainer.getInstance().getBoxes();
 
         adapter = new BoxArrayAdapter(this, R.layout.box_list_item, boxes);
@@ -41,6 +41,22 @@ public class MainActivity extends FragmentActivity {
         super.onResume();
         adapter.notifyDataSetChanged();
     }
+
+    private void setupListView() {
+        if (listView == null) {
+            listView = (ListView)findViewById(R.id.list_view);
+        }
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+
+        setupListView();
+        View empty = findViewById(R.id.empty);
+        listView.setEmptyView(empty);
+    }
+
 
     private View.OnClickListener actionBarListener = new View.OnClickListener() {
         @Override
