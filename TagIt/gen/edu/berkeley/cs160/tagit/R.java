@@ -34,27 +34,32 @@ public final class R {
         public static final int search=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f09001a;
         public static final int addContentItem=0x7f09000c;
         public static final int button=0x7f09000e;
         public static final int contents=0x7f09000b;
         public static final int contentsImageButton=0x7f090004;
         public static final int contentsImageFrame=0x7f090003;
         public static final int contentsLabel=0x7f09000a;
+        public static final int contents_image=0x7f090012;
         public static final int contents_photo_label=0x7f090005;
+        public static final int contents_text=0x7f090015;
+        public static final int empty=0x7f090010;
         public static final int left_button=0x7f090000;
+        public static final int list_view=0x7f09000f;
         public static final int location=0x7f090009;
         public static final int locationLabel=0x7f090008;
+        public static final int location_text=0x7f090014;
         public static final int newContentText=0x7f09000d;
-        public static final int pager=0x7f09000f;
-        public static final int removeContentItem=0x7f090011;
+        public static final int removeContentItem=0x7f090016;
         public static final int right_button=0x7f090002;
-        public static final int tab_icon=0x7f090013;
-        public static final int tab_label=0x7f090014;
+        public static final int tab_icon=0x7f090018;
+        public static final int tab_label=0x7f090019;
         public static final int tagImageButton=0x7f090006;
+        public static final int tag_image=0x7f090013;
         public static final int tag_photo_label=0x7f090007;
-        public static final int text=0x7f090012;
-        public static final int textView=0x7f090010;
+        public static final int text=0x7f090017;
+        public static final int textView=0x7f090011;
         public static final int title=0x7f090001;
     }
     public static final class layout {
@@ -63,8 +68,9 @@ public final class R {
         public static final int activity_camera=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_search=0x7f030004;
-        public static final int content_item=0x7f030005;
-        public static final int tab=0x7f030006;
+        public static final int box_list_item=0x7f030005;
+        public static final int content_item=0x7f030006;
+        public static final int tab=0x7f030007;
     }
     public static final class menu {
         public static final int camera=0x7f080000;
@@ -75,6 +81,7 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int contents_photo_label=0x7f050004;
+        public static final int empty_message=0x7f050006;
         public static final int tag_photo_label=0x7f050005;
         public static final int title_activity_camera=0x7f050002;
     }
