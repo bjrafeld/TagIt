@@ -50,8 +50,11 @@ public class MainActivity extends FragmentActivity {
         LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflator.inflate(R.layout.action_bar, null);
 
-        addBox = (ImageButton)v.findViewById(R.id.add_box);
-        search = (ImageButton)v.findViewById(R.id.search);
+        addBox = (ImageButton)v.findViewById(R.id.right_button);
+        addBox.setImageResource(R.drawable.box);
+
+        search = (ImageButton)v.findViewById(R.id.left_button);
+        search.setImageResource(R.drawable.search);
 
         bar.setCustomView(v);
     }

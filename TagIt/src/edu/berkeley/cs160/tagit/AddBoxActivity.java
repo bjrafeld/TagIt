@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.widget.*;
 import edu.berkeley.cs160.tagit.util.AlbumStorageDirFactory;
 import edu.berkeley.cs160.tagit.util.BaseAlbumDirFactory;
@@ -35,6 +37,7 @@ import android.view.ViewGroup;
  * Last Edited: 11/22/13
  */
 public class AddBoxActivity extends Activity {
+    private ImageButton back;
 	
 	private static final int CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE = 200;
@@ -68,7 +71,35 @@ public class AddBoxActivity extends Activity {
         } else {
             mAlbumStorageDirFactory = new BaseAlbumDirFactory();
         }
+
+        setupActionBar();
     }
+
+    private void setupActionBar() {
+        ActionBar bar = getActionBar();
+        bar.setHomeButtonEnabled(false);
+        bar.setDisplayShowHomeEnabled(false);
+        bar.setDisplayShowCustomEnabled(true);
+        bar.setDisplayShowTitleEnabled(false);
+        bar.setIcon(null);
+
+        LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View actionBar = inflator.inflate(R.layout.action_bar, null);
+
+        ((TextView)actionBar.findViewById(R.id.title)).setText("Add New Box");
+
+        back = (ImageButton)actionBar.findViewById(R.id.left_button);
+        back.setImageResource(R.drawable.back);
+        back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddBoxActivity.this.finish();
+            }
+        });
+
+        bar.setCustomView(actionBar);
+    }
+
 
     /**
      * On Click action for adding content
