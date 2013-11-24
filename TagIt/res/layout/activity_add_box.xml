@@ -2,11 +2,11 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" android:foregroundGravity="center">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" android:gravity="center_vertical">
 
         <RelativeLayout
                 android:layout_width="fill_parent"
@@ -32,7 +32,8 @@
                           android:id="@+id/contents_photo_label"
                           android:layout_gravity="center"
                         android:textAlignment="center" android:gravity="center_vertical|center_horizontal"
-                        android:textColor="@android:color/white"/>
+                        android:textColor="@android:color/white"
+                        android:clickable="false"/>
             </FrameLayout>
             <FrameLayout android:layout_width="120dp"
                          android:layout_height="120dp"
@@ -46,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/tagImageButton"
-                        android:onClick="takeTagPicture" android:background="#2C343C"
+                        android:onClick="takeTagPicture" android:background="#394858"
                         android:adjustViewBounds="false"/>
                 <TextView android:layout_height="wrap_content"
                           android:layout_width="match_parent"
@@ -57,7 +58,8 @@
                           android:id="@+id/tag_photo_label"
                           android:layout_gravity="center"
                           android:textAlignment="center" android:gravity="center_vertical|center_horizontal"
-                          android:textColor="@android:color/white"/>
+                          android:textColor="@android:color/white"
+                        android:clickable="false"/>
             </FrameLayout>
         </RelativeLayout>
         <TextView
