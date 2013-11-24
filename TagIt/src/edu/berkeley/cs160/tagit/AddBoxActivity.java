@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.berkeley.cs160.adapter.TabAdapter.TabAdapter;
 import edu.berkeley.cs160.tagit.util.AlbumStorageDirFactory;
 import edu.berkeley.cs160.tagit.util.BaseAlbumDirFactory;
 import edu.berkeley.cs160.tagit.util.BoxContainer;
@@ -21,8 +20,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +37,7 @@ import android.widget.Toast;
  * Last Edited by: Brendan Rafeld
  * Last Edited: 11/22/13
  */
-public class AddBoxActivity extends Fragment {
+public class AddBoxActivity extends Activity {
 	
 	private static final int CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE = 200;
@@ -59,40 +56,21 @@ public class AddBoxActivity extends Fragment {
 	
 	private ImageButton tagImageView;
 	private ImageButton contentsImageView;
-	
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	View v = inflater.inflate(R.layout.fragment_add_box, container, false);
-    	
-    	tagImageView = (ImageButton) v.findViewById(R.id.tagImageButton);
-    	contentsImageView = (ImageButton) v.findViewById(R.id.contentsImageButton);
-    	
-    	//Can't add Fragment methods to view in XML
-    	tagImageView.setOnClickListener(
-    		new OnClickListener() {
-    			public void onClick(View v) {
-    				takeTagPicture();
-    			}
-    		}
-    	);
-    	
-    	contentsImageView.setOnClickListener(
-        		new OnClickListener() {
-        			public void onClick(View v) {
-        				takeContentsPicture();
-        			}
-        		}
-        	);
-    	
-    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
-			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
-		} else {
-			mAlbumStorageDirFactory = new BaseAlbumDirFactory();
-		}
-    	
-        return v;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_box);
+
+        tagImageView = (ImageButton) findViewById(R.id.tagImageButton);
+        contentsImageView = (ImageButton) findViewById(R.id.contentsImageButton);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+            mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
+        } else {
+            mAlbumStorageDirFactory = new BaseAlbumDirFactory();
+        }
     }
-    
+
     /**
      * On Click action for adding content
      * @param v
@@ -118,7 +96,6 @@ public class AddBoxActivity extends Fragment {
     
     /**
      * On CLick action for Tag Picture
-     * @param v
      */
     public void takeTagPicture() {
     	if(tagPicturePath != null) {
@@ -139,7 +116,6 @@ public class AddBoxActivity extends Fragment {
     
     /**
      * On Click for Contents Picture
-     * @param v
      */
     public void takeContentsPicture() {
     	if(contentsPicturePath != null) {
@@ -164,17 +140,18 @@ public class AddBoxActivity extends Fragment {
      */
     public void saveBox(View v) {
     	if(location == null) {
-    		Toast toast = Toast.makeText(getView().getContext(), "You must enter a Location before saving.", Toast.LENGTH_SHORT);
+    		Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	} else if(tagPicturePath == null) {
-    		Toast toast = Toast.makeText(getView().getContext(), "You must tag a picture of the Tag before saving.", Toast.LENGTH_SHORT);
+    		Toast toast = Toast.makeText(this, "You must tag a picture of the Tag before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	} else if(contentsPicturePath == null) {
-    		Toast toast = Toast.makeText(getView().getContext(), "You must take a picture of the Contents before saving.", Toast.LENGTH_SHORT);
+    		Toast toast = Toast.makeText(this, "You must take a picture of the Contents before saving.", Toast.LENGTH_SHORT);
     		toast.show();
     	}
     	boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
-    	MainActivity a = (MainActivity) getActivity();
+    	finish();
+//        MainActivity a = (MainActivity) getActivity();
 //    	a.selectPage(TabAdapter.BOX_FRAGMENT);
     }
     
@@ -298,7 +275,7 @@ public class AddBoxActivity extends Fragment {
 		File f = new File(path);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
-        this.getActivity().sendBroadcast(mediaScanIntent);
+        this.sendBroadcast(mediaScanIntent);
     }
     
     //Possible Bug: Orientation change may lost picture (Make sure to lock orientation)

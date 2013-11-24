@@ -3,7 +3,8 @@
 
     <string name="app_name">TagIt</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_camera">CameraActivity</string>
+    <string name="action_add_box">Add Box</string>
+    <color name="aaron_blue">#4680D4</color>
 
 </resources>

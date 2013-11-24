@@ -9,13 +9,15 @@
         android:id="@+id/tagImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/box" />
+        android:src="@drawable/box"
+        android:onClick="takeTagPicture"/>
     
     <ImageButton
         android:id="@+id/contentsImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/box" />
+        android:src="@drawable/box"
+        android:onClick="takeContentsPicture"/>
 
     <EditText
         android:id="@+id/locationText"
