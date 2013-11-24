@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 /**
  * 
  * @author bjrafeld
@@ -117,5 +120,40 @@ public class Box {
 	
 	public String getContentsPicturePath() {
 		return this.contentsPicturePath;
+	}
+	
+	public Bitmap getContentsBitmap(int h, int w) {
+		return getBitmap(contentsPicturePath, h, w);
+	}
+	
+	public Bitmap getTagBitmap(int h, int w) {
+		return getBitmap(tagPicturePath, h, w);
+	}
+	
+	private Bitmap getBitmap(String path, int targetH, int targetW) {
+		/* There isn't enough memory to open up more than a couple camera photos */
+		/* So pre-scale the target bitmap into which the file is decoded */
+
+		/* Get the size of the image */
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(path, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+		
+		/* Figure out which way needs to be reduced less */
+		int scaleFactor = 1;
+		if ((targetW > 0) || (targetH > 0)) {
+			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
+		}
+
+		/* Set bitmap options to scale the image decode target */
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		/* Decode the JPEG file into a Bitmap */
+		Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
+		return bitmap;
 	}
 }
