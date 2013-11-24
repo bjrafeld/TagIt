@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * Created by: Daniel
  * Date: 11/21/13
  */
-public class SearchFragment extends Fragment {
+public class SearchActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_search, container, false);

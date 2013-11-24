@@ -40,7 +40,7 @@ import android.widget.Toast;
  * Last Edited by: Brendan Rafeld
  * Last Edited: 11/22/13
  */
-public class AddBoxFragment extends Fragment {
+public class AddBoxActivity extends Fragment {
 	
 	private static final int CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE = 200;
@@ -175,7 +175,7 @@ public class AddBoxFragment extends Fragment {
     	}
     	boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
     	MainActivity a = (MainActivity) getActivity();
-    	a.selectPage(TabAdapter.BOX_FRAGMENT);
+//    	a.selectPage(TabAdapter.BOX_FRAGMENT);
     }
     
     private void takePicture(Uri fileURI, int resultCode) {
