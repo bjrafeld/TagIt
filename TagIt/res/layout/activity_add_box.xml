@@ -17,12 +17,12 @@
                     android:id="@+id/contentsImageButton"
                     android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
                     android:layout_marginTop="24dp"
-                    android:onClick="takeTagPicture"/>
+                    android:onClick="takeContentsPicture"/>
             <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:id="@+id/tagImageButton"
-                    android:onClick="takeContentsPicture" android:layout_alignParentLeft="false"
+                    android:onClick="takeTagPicture" android:layout_alignParentLeft="false"
                     android:layout_alignParentTop="false"
                     android:layout_alignRight="@+id/contentsImageButton"
                     android:layout_alignBottom="@+id/contentsImageButton" android:layout_marginRight="-15dp"

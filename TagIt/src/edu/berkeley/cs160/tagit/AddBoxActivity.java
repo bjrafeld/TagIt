@@ -97,7 +97,7 @@ public class AddBoxActivity extends Activity {
     /**
      * On CLick action for Tag Picture
      */
-    public void takeTagPicture() {
+    public void takeTagPicture(View view) {
     	if(tagPicturePath != null) {
     		File deleted = new File(tagPicturePath);
     		deleted.delete();
@@ -117,7 +117,7 @@ public class AddBoxActivity extends Activity {
     /**
      * On Click for Contents Picture
      */
-    public void takeContentsPicture() {
+    public void takeContentsPicture(View view) {
     	if(contentsPicturePath != null) {
     		File deleted = new File(contentsPicturePath);
     		deleted.delete();
