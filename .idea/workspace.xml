@@ -25,11 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3434db0d-df09-4e52-90d8-10a742bad2ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TagIt/res/drawable-mdpi/back.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/AddBoxActivity.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/AddBoxActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/res/layout/action_bar.xml" afterPath="$PROJECT_DIR$/TagIt/res/layout/action_bar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TagIt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +43,7 @@
     <file path="/tab_browse.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385163986269" ignored="false" />
     <file path="/tab.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385163931591" ignored="false" />
     <file path="/themes.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385255558451" ignored="false" />
-    <file path="/action_bar.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385317612252" ignored="false" />
+    <file path="/action_bar.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385318323108" ignored="false" />
     <file path="/strings.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385260638258" ignored="false" />
     <file path="/a.dummy" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385255506691" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1385260819210" ignored="false" />
@@ -167,22 +163,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="action_bar.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="action_bar.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TagIt/res/layout/action_bar.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="34" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-13.851851">
+            <state line="23" column="14" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.7083333">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddBoxActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AddBoxActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/AddBoxActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="1" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.29015544">
+            <state line="93" column="93" selection-start="3164" selection-end="3164" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#3268#3269#0" expanded="true" />
                 <element signature="e#3980#4131#0" expanded="true" />
@@ -268,9 +264,9 @@
         <option value="$PROJECT_DIR$/TagIt/res/layout/fragment_add_box.xml" />
         <option value="$PROJECT_DIR$/TagIt/res/layout/activity_add_box.xml" />
         <option value="$PROJECT_DIR$/TagIt/res/layout/content_item.xml" />
-        <option value="$PROJECT_DIR$/TagIt/res/layout/action_bar.xml" />
         <option value="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java" />
         <option value="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/AddBoxActivity.java" />
+        <option value="$PROJECT_DIR$/TagIt/res/layout/action_bar.xml" />
       </list>
     </option>
   </component>
@@ -705,7 +701,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1436" height="878" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21654676" sideWeight="0.83113456" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19784173" sideWeight="0.83113456" order="2" side_tool="false" content_ui="tabs" />
@@ -725,7 +721,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67150635" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13093525" sideWeight="0.83113456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13112392" sideWeight="0.83113456" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16886544" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -902,16 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TagIt/res/layout/action_bar.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="34" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-13.851851">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="51" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0">
@@ -921,12 +907,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/AddBoxActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="1" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.29015544">
+        <state line="93" column="93" selection-start="3164" selection-end="3164" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#3268#3269#0" expanded="true" />
             <element signature="e#3980#4131#0" expanded="true" />
             <element signature="e#4120#4121#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TagIt/res/layout/action_bar.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="14" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.7083333">
+          <folding />
         </state>
       </provider>
     </entry>
