@@ -62,7 +62,8 @@ public class BoxContainer {
 	}
 	
 	/**
-	 * This method returns a list of all the boxes for a search
+	 * This method returns a list of all the boxes for a search.
+	 * Returns NULL is nothing matches the search
 	 * 
 	 * @param query		String to search on
 	 * @return
@@ -91,11 +92,23 @@ public class BoxContainer {
 		return locationsList;
 	}
 	
+	/**
+	 * Returns a list of boxes grouped together by their color grouping
+	 * 
+	 * @return
+	 */
 	public ArrayList<Box> sortByColor() {
-		//TODO
+		//For each color create an array list
+		//iterate through the list of boxes and add to appropriate ColorList
+		//Concatenate all lists according to order we specify
+		//return the output
 		return null;
 	}
 	
+	/**
+	 * Returns a list of the boxes sorted in alphabetical order by their location.
+	 * @return
+	 */
 	public ArrayList<Box> sortByLocation() {
 		//TODO
 		return null;
