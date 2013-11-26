@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 
 /**
  * 
@@ -19,6 +20,7 @@ public class Box {
 	private String tagPicturePath;
 	private String contentsPicturePath;
 	private int boxID;
+	private Color color;
 	
 	private static int idCounter = 0;
 	
@@ -28,6 +30,7 @@ public class Box {
 	protected Box() {
 		this.boxID = idCounter;
 		this.contents = new ArrayList<String>();
+		this.color = null;
 		idCounter++;
 	}
 	
@@ -155,5 +158,13 @@ public class Box {
 		/* Decode the JPEG file into a Bitmap */
 		Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
 		return bitmap;
+	}
+	
+	public Color getColor() {
+		return this.color;
+	}
+	
+	public void setColor(Color c) {
+		this.color = c;
 	}
 }

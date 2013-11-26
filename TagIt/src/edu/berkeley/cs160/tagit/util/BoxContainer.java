@@ -61,6 +61,46 @@ public class BoxContainer {
 		return this.boxes;
 	}
 	
+	/**
+	 * This method returns a list of all the boxes for a search
+	 * 
+	 * @param query		String to search on
+	 * @return
+	 */
+	public ArrayList<Box> searchBoxes(String query) {
+		String[] words = query.split("\\s+");
+		ArrayList<Box> locationsList = new ArrayList<Box>();
+		ArrayList<Box> contentsList = new ArrayList<Box>();
+		boolean duplicateFlag = false;
+		for (String w : words) {
+			for(Box b : getBoxes()) {
+				duplicateFlag = false;
+				if(b.getLocation().equals(w)) {
+					locationsList.add(b);
+					duplicateFlag = true;
+				}
+				if(b.getContents().contains(w) && (!duplicateFlag)) {
+					contentsList.add(b);
+				}
+			}
+		}
+		locationsList.addAll(contentsList);
+		if(locationsList.isEmpty()) {
+			locationsList = null;
+		}
+		return locationsList;
+	}
+	
+	public ArrayList<Box> sortByColor() {
+		//TODO
+		return null;
+	}
+	
+	public ArrayList<Box> sortByLocation() {
+		//TODO
+		return null;
+	}
+	
 	/*
 	 * This class will hold implementation for all Box logic.
 	 */
