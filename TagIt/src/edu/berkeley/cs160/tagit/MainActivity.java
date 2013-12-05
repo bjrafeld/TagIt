@@ -1,6 +1,7 @@
 package edu.berkeley.cs160.tagit;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import edu.berkeley.cs160.tagit.util.BoxContainer;
 
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
     private ImageButton addBox, search;
     private BoxArrayAdapter adapter;
     private ListView listView;

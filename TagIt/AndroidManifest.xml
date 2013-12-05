@@ -28,10 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-                android:name="edu.berkeley.cs160.tagit.CameraActivity"
-                android:label="@string/title_activity_camera" >
-        </activity>
+        <!--<activity-->
+                <!--android:name="edu.berkeley.cs160.tagit.CameraActivity"-->
+                <!--android:label="@string/title_activity_camera" >-->
+        <!--</activity>-->
         <activity
                 android:name="edu.berkeley.cs160.tagit.AddBoxActivity"
                 android:label="AddBoxActivity" >

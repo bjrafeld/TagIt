@@ -4,9 +4,38 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Search View"
-            android:id="@+id/textView" android:layout_gravity="center" android:gravity="center_vertical|center_horizontal"/>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_border" android:paddingLeft="15dp" android:paddingTop="10dp"
+            android:paddingRight="15dp" android:paddingBottom="13dp">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchButton" android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" android:src="@drawable/search_dark"
+                android:background="@android:color/transparent"/>
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_field"
+                android:layout_toLeftOf="@id/searchButton" android:layout_marginRight="10dp"
+                android:hint="Search text..."/>
+    </RelativeLayout>
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/list_view" android:background="@color/white"/>
+        <TextView
+                android:id="@+id/empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" android:textAlignment="center"
+                android:gravity="center" android:textSize="24dp" android:layout_marginTop="-20dp"
+                />
+
+    </FrameLayout>
 </LinearLayout>
