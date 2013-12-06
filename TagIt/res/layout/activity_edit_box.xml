@@ -115,15 +115,33 @@
                     android:hint="Add item"
                     android:layout_centerVertical="true"/>
         </RelativeLayout>
-        <Button
+        <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save Box"
-                android:id="@+id/button"
-                android:layout_gravity="center_horizontal"
-                android:onClick="saveBox"
-                android:background="@color/aaron_blue" android:layout_marginTop="15dp"
-                android:paddingLeft="25dp" android:paddingRight="25dp" android:textSize="30dp"
-                android:textColor="@android:color/white"/>
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" android:layout_marginBottom="7dp">
+            <Button
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remove Box"
+                    android:id="@+id/removeButton"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="removeBox"
+                    android:background="@color/danger_red"
+                    android:paddingLeft="20dp" android:paddingRight="20dp" android:textSize="24dp"
+                    android:textColor="@android:color/white" android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save Box"
+                    android:id="@+id/saveButton"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="saveBox"
+                    android:background="@color/aaron_blue"
+                    android:paddingLeft="20dp" android:paddingRight="20dp" android:textSize="24dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentRight="true"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

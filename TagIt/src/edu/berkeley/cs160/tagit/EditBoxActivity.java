@@ -41,6 +41,7 @@ public class EditBoxActivity extends Activity {
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
+    private String title = "Add new box";
 	
 	/* Box related fields */
     private boolean isNew = true;
@@ -76,11 +77,16 @@ public class EditBoxActivity extends Activity {
             mAlbumStorageDirFactory = new BaseAlbumDirFactory();
         }
 
-        setupActionBar();
-        if (getIntent().hasExtra("box_id")) {
+        if (!boxIsNew()) {
+            int id = getIntent().getIntExtra("box_id", 0);
+            box = boxContainer.getBox(id);
+
             isNew = false;
             populateFields();
+            ((TextView)findViewById(R.id.tag_photo_label)).setVisibility(View.INVISIBLE);
+            ((TextView)findViewById(R.id.contents_photo_label)).setVisibility(View.INVISIBLE);
         }
+        setupActionBar();
     }
 
     private void setupActionBar() {
@@ -94,7 +100,7 @@ public class EditBoxActivity extends Activity {
         LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View actionBar = inflator.inflate(R.layout.action_bar, null);
 
-        ((TextView)actionBar.findViewById(R.id.title)).setText("Add New Box");
+        ((TextView)actionBar.findViewById(R.id.title)).setText(title);
 
         back = (ImageButton)actionBar.findViewById(R.id.left_button);
         back.setImageResource(R.drawable.back);
@@ -111,13 +117,21 @@ public class EditBoxActivity extends Activity {
     private void populateFields() {
         Intent intent = getIntent();
         box = BoxContainer.find(intent.getIntExtra("box_id", -1));
-        if (box != null) {
-            setPicture(box.getContentsPicturePath(), contentsImageView);
-            setPicture(box.getTagPicturePath(), tagImageView);
-            locationField.setText(box.getLocation());
-            for (String content : box.getContents()) {
-                addContent(content);
-            }
+        if (box == null) return;
+
+        if (intent.hasExtra("title")) {
+            title = intent.getStringExtra("title");
+        }
+        findViewById(R.id.removeButton).setVisibility(View.VISIBLE);
+
+        contentsPicturePath = box.getContentsPicturePath();
+        tagPicturePath = box.getContentsPicturePath();
+
+        setPicture(box.getContentsPicturePath(), contentsImageView);
+        setPicture(box.getTagPicturePath(), tagImageView);
+        locationField.setText(box.getLocation());
+        for (String content : box.getContents()) {
+            addContent(content);
         }
     }
 
@@ -222,9 +236,19 @@ public class EditBoxActivity extends Activity {
         }
 
     	if(boxIsValid()) {
-            boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
+            if (boxIsNew()) {
+                boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
+            } else {
+                int id = box.getID();
+                boxContainer.updateBox(id,location, contents, tagPicturePath, contentsPicturePath);
+            }
             finish();
         }
+    }
+
+    public void removeBox(View v) {
+        boxContainer.removeBox(box);
+        finish();
     }
 
     private boolean boxIsValid() {
@@ -370,6 +394,10 @@ public class EditBoxActivity extends Activity {
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+    }
+
+    private boolean boxIsNew() {
+        return !getIntent().hasExtra("box_id");
     }
     
     //Possible Bug: Orientation change may lost picture (Make sure to lock orientation)

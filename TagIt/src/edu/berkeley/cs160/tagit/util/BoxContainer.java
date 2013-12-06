@@ -1,5 +1,12 @@
 package edu.berkeley.cs160.tagit.util;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import edu.berkeley.cs160.tagit.R;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -47,6 +54,14 @@ public class BoxContainer {
 		Box b = new Box(location, contents, tagPicture, contentsPicture);
 		boxes.add(b);
 	}
+
+    public void updateBox(int id, String location, ArrayList<String> contents, String tagPicture, String contentsPicture) {
+        Box b = boxes.get(id);
+        b.setLocation(location);
+        b.setTagPicture(tagPicture);
+        b.setContentsPicture(contentsPicture);
+        b.setContents(contents);
+    }
 	
 	/**
 	 * Removes a box from the container.
@@ -120,6 +135,34 @@ public class BoxContainer {
 		//return the output
 		return null;
 	}
+
+    public Box getBox(int id) {
+        for (Box b : boxes) {
+            if (b.getID() == id) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the box with the highest ID, or null if there are no boxes.
+     * @return Box with highest ID
+     */
+    public Box lastBox() {
+        if (boxes.isEmpty()) {
+            return null;
+        }
+
+        Box last = boxes.get(0);
+        for (Box box : boxes) {
+           if (box.getID() > last.getID()) {
+               last = box;
+           }
+        }
+
+        return last;
+    }
 	
 	/**
 	 * Returns a list of the boxes sorted in alphabetical order by their location.

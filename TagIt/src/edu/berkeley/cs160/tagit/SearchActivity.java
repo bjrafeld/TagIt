@@ -97,9 +97,15 @@ public class SearchActivity extends Activity {
                 Box b = results.get(position);
                 Intent intent = new Intent(SearchActivity.this, EditBoxActivity.class);
                 intent.putExtra("box_id", b.getID());
-                startActivity(intent);
+                startActivityForResult(intent, 900);
             }
         });
+    }
+
+    protected void onActivityResult(int reqCode, int resCode, Intent data) {
+        super.onActivityResult(reqCode, resCode, data);
+
+        ((BoxArrayAdapter)listView.getAdapter()).clear();
     }
 
 }

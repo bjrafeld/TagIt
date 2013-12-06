@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import edu.berkeley.cs160.adapter.BoxArrayAdapter;
 import edu.berkeley.cs160.tagit.util.Box;
 import edu.berkeley.cs160.tagit.util.BoxContainer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -21,6 +23,8 @@ public class MainActivity extends Activity {
     private BoxArrayAdapter adapter;
     private ListView listView;
     private ArrayList<Box> boxes;
+
+    private static int PHOTO_SEARCH_CODE = 600;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +52,14 @@ public class MainActivity extends Activity {
         if (listView == null) {
             listView = (ListView)findViewById(R.id.list_view);
 
+            View headerView = View.inflate(MainActivity.this, R.layout.browse_header, null);
+            listView.addHeaderView(headerView);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    Box b = boxes.get(position);
-                    Intent intent = new Intent(MainActivity.this, EditBoxActivity.class);
-                    intent.putExtra("box_id", b.getID());
-                    startActivity(intent);
+                    Box b = boxes.get(position - 1);
+                    editBox(b.getID(), "Edit Box");
                 }
             });
         }
@@ -108,6 +113,32 @@ public class MainActivity extends Activity {
 
     public void updateList() {
         adapter.notifyDataSetChanged();
+    }
+
+    public void takeSearchPicture(View v) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, PHOTO_SEARCH_CODE);
+    }
+
+    /**
+     * For demo purposes only.  Shows the last box added, regardless
+     * of the photo taken.
+     */
+    public void onActivityResult(int reqCode, int resCode, Intent data) {
+        super.onActivityResult(reqCode, resCode, data);
+
+        BoxContainer container = BoxContainer.getInstance();
+        Box b = container.lastBox();
+        int id = b.getID();
+
+        editBox(id, "Found Box");
+    }
+
+    private void editBox(int id, String title) {
+        Intent intent = new Intent(MainActivity.this, EditBoxActivity.class);
+        intent.putExtra("box_id", id);
+        intent.putExtra("title", title);
+        startActivity(intent);
     }
 
 }

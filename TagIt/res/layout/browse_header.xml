@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:paddingTop="15dp" android:paddingBottom="18dp"
+    android:background="@drawable/bottom_border">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Box with Tag Photo"
+        android:id="@+id/button" android:layout_gravity="center_horizontal"
+        android:background="@color/cool_green" android:paddingLeft="15dp" android:paddingRight="15dp"
+        android:textSize="23dp" android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/camera"
+        android:drawablePadding="10dp"
+        android:onClick="takeSearchPicture"/>
+</FrameLayout>

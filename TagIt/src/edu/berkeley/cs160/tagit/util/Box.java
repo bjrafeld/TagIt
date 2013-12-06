@@ -83,22 +83,26 @@ public class Box {
 		this.contents.remove(item);
 		//Collections.sort(this.contents);
 	}
+
+    public void setContents(ArrayList<String> contents) {
+        this.contents = contents;
+    }
 	
 	/**
 	 * Add a tagPicture to the Box.
 	 * 
 	 * @param path		Path to file containing image bitmap
 	 */
-	public void addTagPicture(String path) {
+	public void setTagPicture(String path) {
 		this.tagPicturePath = path;
 	}
-	
+
 	/**
 	 * Add a contentsPicture to the Box.
 	 * 
 	 * @param path		Path to file containing image bitmap
 	 */
-	public void addContentsPicture(String path) {
+	public void setContentsPicture(String path) {
 		this.contentsPicturePath = path;
 	}
 	
