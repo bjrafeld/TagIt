@@ -33,7 +33,7 @@
                 <!--android:label="@string/title_activity_camera" >-->
         <!--</activity>-->
         <activity
-                android:name="edu.berkeley.cs160.tagit.AddBoxActivity"
+                android:name=".EditBoxActivity"
                 android:label="AddBoxActivity" >
         </activity>
         <activity

@@ -9,10 +9,7 @@ import java.util.Date;
 import android.app.ActionBar;
 import android.content.Context;
 import android.widget.*;
-import edu.berkeley.cs160.tagit.util.AlbumStorageDirFactory;
-import edu.berkeley.cs160.tagit.util.BaseAlbumDirFactory;
-import edu.berkeley.cs160.tagit.util.BoxContainer;
-import edu.berkeley.cs160.tagit.util.FroyoAlbumDirFactory;
+import edu.berkeley.cs160.tagit.util.*;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,7 +24,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 
 /**
  * Created by: Daniel
@@ -36,7 +32,7 @@ import android.view.ViewGroup;
  * Last Edited by: Brendan Rafeld
  * Last Edited: 11/22/13
  */
-public class AddBoxActivity extends Activity {
+public class EditBoxActivity extends Activity {
 
 	private static final int CAPTURE_CONTENTS_PICTURE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_TAG_PICTURE_ACTIVITY_REQUEST_CODE = 200;
@@ -47,25 +43,30 @@ public class AddBoxActivity extends Activity {
 	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 	
 	/* Box related fields */
+    private boolean isNew = true;
+
 	private ArrayList<String> contents = null;
 	private String tagPicturePath = null, contentsPicturePath = null;
 	
 	private BoxContainer boxContainer = BoxContainer.getInstance();
+    private Box box = null;
 	
 	private ImageButton tagImageView;
 	private ImageButton contentsImageView;
     private LinearLayout contentsList;
     private ImageButton back;
     private EditText addContentField;
+    private EditText locationField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_box);
+        setContentView(R.layout.activity_edit_box);
 
         tagImageView = (ImageButton) findViewById(R.id.tagImageButton);
         contentsImageView = (ImageButton) findViewById(R.id.contentsImageButton);
         contentsList = (LinearLayout) findViewById(R.id.contents);
         addContentField = (EditText) findViewById(R.id.newContentText);
+        locationField = (EditText) findViewById(R.id.location);
 
         contents = new ArrayList<String>();
 
@@ -76,6 +77,10 @@ public class AddBoxActivity extends Activity {
         }
 
         setupActionBar();
+        if (getIntent().hasExtra("box_id")) {
+            isNew = false;
+            populateFields();
+        }
     }
 
     private void setupActionBar() {
@@ -96,11 +101,24 @@ public class AddBoxActivity extends Activity {
         back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddBoxActivity.this.finish();
+                EditBoxActivity.this.finish();
             }
         });
 
         bar.setCustomView(actionBar);
+    }
+
+    private void populateFields() {
+        Intent intent = getIntent();
+        box = BoxContainer.find(intent.getIntExtra("box_id", -1));
+        if (box != null) {
+            setPicture(box.getContentsPicturePath(), contentsImageView);
+            setPicture(box.getTagPicturePath(), tagImageView);
+            locationField.setText(box.getLocation());
+            for (String content : box.getContents()) {
+                addContent(content);
+            }
+        }
     }
 
 
@@ -108,7 +126,7 @@ public class AddBoxActivity extends Activity {
      * On Click action for adding content
      * @param v
      */
-    public void addContent(View v) {
+    public void addContentFromView(View v) {
     	EditText newContentsItem = (EditText) findViewById(R.id.newContentText);
         String text = newContentsItem.getText().toString();
         if(text.matches("")) {
@@ -116,12 +134,20 @@ public class AddBoxActivity extends Activity {
     		toast.show();
     		return;
         }
-    	contents.add(text);
         newContentsItem.setText("");
+        addContent(text);
+    }
+
+    /**
+     * Adds a content item to the Box object, and updates the view
+     * @param text  The name of the object being added
+     */
+    public void addContent(String text) {
+        contents.add(text);
 
         View itemView = LayoutInflater.from(getBaseContext()).inflate(R.layout.content_item, null);
         ((TextView)itemView.findViewById(R.id.text)).setText(text);
-        ((ImageButton)itemView.findViewById(R.id.removeContentItem)).setOnClickListener(new OnClickListener() {
+        (itemView.findViewById(R.id.removeContentItem)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 removeContent(view);
@@ -129,6 +155,7 @@ public class AddBoxActivity extends Activity {
         });
 
         contentsList.addView(itemView);
+
     }
     
     /**
@@ -194,19 +221,32 @@ public class AddBoxActivity extends Activity {
             contents.add(unAddedContent);
         }
 
-    	if(location.matches("")) {
-    		Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
-    		toast.show();
-    	} else if(tagPicturePath == null) {
-    		Toast toast = Toast.makeText(this, "You must tag a picture of the Tag before saving.", Toast.LENGTH_SHORT);
-    		toast.show();
-    	} else if(contentsPicturePath == null) {
-    		Toast toast = Toast.makeText(this, "You must take a picture of the Contents before saving.", Toast.LENGTH_SHORT);
-    		toast.show();
-    	} else {
+    	if(boxIsValid()) {
             boxContainer.addBox(location, contents, tagPicturePath, contentsPicturePath);
             finish();
         }
+    }
+
+    private boolean boxIsValid() {
+        boolean isValid = true;
+        String location = ((EditText)findViewById(R.id.location)).getText().toString().trim();
+
+        if(location.matches("")) {
+            Toast toast = Toast.makeText(this, "You must enter a Location before saving.", Toast.LENGTH_SHORT);
+            toast.show();
+            isValid = false;
+        }
+        if(tagPicturePath == null) {
+            Toast toast = Toast.makeText(this, "You must tag a picture of the Tag before saving.", Toast.LENGTH_SHORT);
+            toast.show();
+            isValid = false;
+        } else if(contentsPicturePath == null) {
+            Toast toast = Toast.makeText(this, "You must take a picture of the Contents before saving.", Toast.LENGTH_SHORT);
+            toast.show();
+            isValid = false;
+        }
+
+        return isValid;
     }
     
     private void takePicture(Uri fileURI, int resultCode) {

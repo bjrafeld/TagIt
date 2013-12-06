@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:onClick="addContent"
+                    android:onClick="addContentFromView"
                     android:layout_centerVertical="true"/>
             <EditText
                     android:layout_width="fill_parent"

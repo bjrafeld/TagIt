@@ -56,6 +56,22 @@ public class BoxContainer {
 	public void removeBox(Box box) {
 		boxes.remove(box);
 	}
+
+    /**
+     * Returns a box with the given id, or null if the box cannot be
+     * found
+     *
+     * @param id
+     */
+    public static Box find(int id) {
+        if (singleton != null) {
+            for (int i = 0; i < singleton.boxes.size(); i++) {
+                Box box = singleton.boxes.get(i);
+                if (box.getID() == id) { return box; }
+            }
+        }
+        return null;
+    }
 	
 	public ArrayList<Box> getBoxes() {
 		return this.boxes;

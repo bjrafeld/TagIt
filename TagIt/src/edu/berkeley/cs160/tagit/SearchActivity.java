@@ -3,15 +3,13 @@ package edu.berkeley.cs160.tagit;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import edu.berkeley.cs160.adapter.BoxArrayAdapter;
 import edu.berkeley.cs160.tagit.util.Box;
 import edu.berkeley.cs160.tagit.util.BoxContainer;
@@ -29,6 +27,8 @@ public class SearchActivity extends Activity {
     private ListView listView;
     private BoxContainer boxContainer;
     private TextView empty;
+
+    private ArrayList<Box> results;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +75,7 @@ public class SearchActivity extends Activity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Box> results = boxContainer.searchBoxes(searchField.getText().toString());
+                results = boxContainer.searchBoxes(searchField.getText().toString());
                 if (results == null) {
                     String message = "'" + searchField.getText().toString() + "'";
                     message += "\ndid not match any boxes";
@@ -91,6 +91,15 @@ public class SearchActivity extends Activity {
             }
         });
         listView.setEmptyView(empty);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Box b = results.get(position);
+                Intent intent = new Intent(SearchActivity.this, EditBoxActivity.class);
+                intent.putExtra("box_id", b.getID());
+                startActivity(intent);
+            }
+        });
     }
 
 }

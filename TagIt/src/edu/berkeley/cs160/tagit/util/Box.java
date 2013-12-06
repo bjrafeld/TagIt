@@ -2,11 +2,13 @@ package edu.berkeley.cs160.tagit.util;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * 
@@ -20,8 +22,7 @@ public class Box {
 	private String tagPicturePath;
 	private String contentsPicturePath;
 	private int boxID;
-	private Color color;
-	
+
 	private static int idCounter = 0;
 	
 	/**
@@ -30,7 +31,6 @@ public class Box {
 	protected Box() {
 		this.boxID = idCounter;
 		this.contents = new ArrayList<String>();
-		this.color = null;
 		idCounter++;
 	}
 	
@@ -45,8 +45,17 @@ public class Box {
 		
 		idCounter++;
 	}
-	
-	/**
+
+    public Box(Parcel parcel) {
+        location            = parcel.readString();
+        parcel.readStringList(contents);
+        tagPicturePath      = parcel.readString();
+        contentsPicturePath = parcel.readString();
+        boxID               = parcel.readInt();
+    }
+
+
+    /**
 	 * Set the location of the Box.
 	 * 
 	 * @param location
@@ -78,7 +87,7 @@ public class Box {
 	/**
 	 * Add a tagPicture to the Box.
 	 * 
-	 * @param f		File containing image bitmap
+	 * @param path		Path to file containing image bitmap
 	 */
 	public void addTagPicture(String path) {
 		this.tagPicturePath = path;
@@ -87,7 +96,7 @@ public class Box {
 	/**
 	 * Add a contentsPicture to the Box.
 	 * 
-	 * @param f		File containing image bitmap
+	 * @param path		Path to file containing image bitmap
 	 */
 	public void addContentsPicture(String path) {
 		this.contentsPicturePath = path;
@@ -158,13 +167,5 @@ public class Box {
 		/* Decode the JPEG file into a Bitmap */
 		Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
 		return bitmap;
-	}
-	
-	public Color getColor() {
-		return this.color;
-	}
-	
-	public void setColor(Color c) {
-		this.color = c;
 	}
 }

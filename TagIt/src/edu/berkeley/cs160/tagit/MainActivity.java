@@ -5,9 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import edu.berkeley.cs160.adapter.BoxArrayAdapter;
@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     private ImageButton addBox, search;
     private BoxArrayAdapter adapter;
     private ListView listView;
+    private ArrayList<Box> boxes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends Activity {
         addBox.setOnClickListener(actionBarListener);
         search.setOnClickListener(actionBarListener);
 
-        ArrayList<Box> boxes = BoxContainer.getInstance().getBoxes();
+        boxes = BoxContainer.getInstance().getBoxes();
 
         adapter = new BoxArrayAdapter(this, R.layout.box_list_item, boxes);
         listView.setAdapter(adapter);
@@ -46,6 +47,16 @@ public class MainActivity extends Activity {
     private void setupListView() {
         if (listView == null) {
             listView = (ListView)findViewById(R.id.list_view);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    Box b = boxes.get(position);
+                    Intent intent = new Intent(MainActivity.this, EditBoxActivity.class);
+                    intent.putExtra("box_id", b.getID());
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -64,7 +75,7 @@ public class MainActivity extends Activity {
         public void onClick(View view) {
             Intent intent;
             if (view == addBox) {
-                intent = new Intent(MainActivity.this, AddBoxActivity.class);
+                intent = new Intent(MainActivity.this, EditBoxActivity.class);
             } else if (view == search) {
                 intent = new Intent(MainActivity.this, SearchActivity.class);
             } else {
