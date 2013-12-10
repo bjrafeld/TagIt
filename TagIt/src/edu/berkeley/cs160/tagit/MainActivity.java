@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import edu.berkeley.cs160.adapter.BoxArrayAdapter;
 import edu.berkeley.cs160.tagit.util.Box;
 import edu.berkeley.cs160.tagit.util.BoxContainer;

@@ -41,8 +41,8 @@ public class BoxArrayAdapter extends ArrayAdapter<Box> {
 
         Box box = objects.get(position);
         openBox.setImageBitmap(box.getContentsBitmap(60,60));
-        location.setText("Location: " + box.getLocation());
-        contents.setText("Contents: " + box.getContentsString());
+        location.setText(box.getLocation());
+        contents.setText(box.getContentsString());
 
         return row;
     }
