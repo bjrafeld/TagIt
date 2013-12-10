@@ -19,10 +19,14 @@
                   android:gravity="center_vertical|left">
         <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/location_text" android:textSize="18dp"/>
+                android:id="@+id/location_text"
+                android:textColor="@color/slate"
+                android:textSize="22dp"/>
         <TextView android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:id="@+id/contents_text" android:textSize="18dp"/>
+                  android:id="@+id/contents_text"
+                  android:textColor="@color/contents"
+                  android:textSize="18dp"/>
     </LinearLayout>
 
 </LinearLayout>

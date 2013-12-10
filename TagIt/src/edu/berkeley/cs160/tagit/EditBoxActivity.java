@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.ActionBar;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.*;
+import edu.berkeley.cs160.dialog.PhotoDialogFragment;
 import edu.berkeley.cs160.tagit.util.*;
 
 import android.app.Activity;
@@ -57,6 +60,7 @@ public class EditBoxActivity extends Activity {
 	private ImageButton contentsImageView;
     private LinearLayout contentsList;
     private ImageButton back;
+    private ImageButton help;
     private EditText addContentField;
     private ImageButton addContentButton;
     private EditText locationField;
@@ -116,12 +120,23 @@ public class EditBoxActivity extends Activity {
 
         ((TextView)actionBar.findViewById(R.id.title)).setText(title);
 
+        final DialogFragment helpDialog = new PhotoDialogFragment();
+
         back = (ImageButton)actionBar.findViewById(R.id.left_button);
         back.setImageResource(R.drawable.back);
         back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditBoxActivity.this.finish();
+            }
+        });
+
+        help = (ImageButton)actionBar.findViewById(R.id.right_button);
+        help.setImageResource(R.drawable.help);
+        help.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                helpDialog.show(getFragmentManager(), "HelpDialogFragment");
             }
         });
 

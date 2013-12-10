@@ -15,5 +15,8 @@
     <color name="white">#FFFFFF</color>
     <color name="cool_green">#52af79</color>
     <color name="danger_red">#C93F4B</color>
+    <color name="cardstock">#B39360</color>
+    <color name="slate">#394858</color>
+    <color name="contents">#544f4c</color>
 
 </resources>
