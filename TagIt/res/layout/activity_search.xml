@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/search_field"
                 android:layout_toLeftOf="@id/searchButton" android:layout_marginRight="10dp"
-                android:hint="Search text..."/>
+                android:hint="Search by location or contents..."/>
     </RelativeLayout>
     <FrameLayout
             android:layout_width="fill_parent"

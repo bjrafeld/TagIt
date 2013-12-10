@@ -36,13 +36,11 @@ public class BoxArrayAdapter extends ArrayAdapter<Box> {
         View row = inflater.inflate(R.layout.box_list_item, parent, false);
 
         ImageView openBox  = (ImageView)row.findViewById(R.id.contents_image);
-        ImageView boxTag   = (ImageView)row.findViewById(R.id.tag_image);
         TextView  location = (TextView) row.findViewById(R.id.location_text);
         TextView  contents = (TextView) row.findViewById(R.id.contents_text);
 
         Box box = objects.get(position);
         openBox.setImageBitmap(box.getContentsBitmap(60,60));
-        boxTag.setImageBitmap(box.getTagBitmap(60,60));
         location.setText("Location: " + box.getLocation());
         contents.setText("Contents: " + box.getContentsString());
 

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import edu.berkeley.cs160.tagit.R;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -176,5 +177,64 @@ public class BoxContainer {
 	/*
 	 * This class will hold implementation for all Box logic.
 	 */
+
+    public static ArrayList<Box> prePopulatedBoxes(Context context) throws IOException {
+        BoxContainer bc = getInstance();
+
+        ArrayList contents;
+        String contentsPath;
+        String tagPath;
+
+        // Electronics Box
+        contents = new ArrayList();
+        contents.add("Joystick");
+        contents.add("Circuit board");
+        contents.add("Bag of twist-ties");
+        contents.add("DVI cable");
+        contents.add("Wires");
+
+        tagPath = Box.saveBitmapAt("robot_doodle.png", context);
+        contentsPath = Box.saveBitmapAt("electronics.jpg", context);
+
+        bc.addBox("Office", contents, tagPath, contentsPath);
+
+        // Produce Box
+        contents = new ArrayList();
+        contents.add("Lettuce");
+        contents.add("Chard");
+        contents.add("Turnips");
+        contents.add("Strawberries");
+        contents.add("Onions");
+        contents.add("Mango");
+
+        tagPath = Box.saveBitmapAt("produce_label.jpg", context);
+        contentsPath = Box.saveBitmapAt("produce.jpg", context);
+
+        bc.addBox("Refrigerator", contents, tagPath, contentsPath);
+
+        // Clothing Box
+        contents = new ArrayList();
+        contents.add("Jeans");
+        contents.add("Belt");
+        contents.add("Shoes");
+        contents.add("Sweatshirt");
+
+        tagPath = Box.saveBitmapAt("clothes_label.jpg", context);
+        contentsPath = Box.saveBitmapAt("clothes.jpg", context);
+
+        bc.addBox("Bedroom Closet", contents, tagPath, contentsPath);
+
+        // Golf Balls Box
+        contents = new ArrayList();
+        contents.add("Golf balls");
+
+        tagPath = Box.saveBitmapAt("balls_label.jpg", context);
+        contentsPath = Box.saveBitmapAt("balls.jpg", context);
+
+        bc.addBox("Garage", contents, tagPath, contentsPath);
+
+
+        return bc.getBoxes();
+    }
 	
 }

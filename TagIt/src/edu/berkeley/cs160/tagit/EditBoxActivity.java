@@ -8,6 +8,7 @@ import java.util.Date;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.view.KeyEvent;
 import android.widget.*;
 import edu.berkeley.cs160.tagit.util.*;
 
@@ -57,6 +58,7 @@ public class EditBoxActivity extends Activity {
     private LinearLayout contentsList;
     private ImageButton back;
     private EditText addContentField;
+    private ImageButton addContentButton;
     private EditText locationField;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class EditBoxActivity extends Activity {
         contentsList = (LinearLayout) findViewById(R.id.contents);
         addContentField = (EditText) findViewById(R.id.newContentText);
         locationField = (EditText) findViewById(R.id.location);
+        addContentButton = (ImageButton) findViewById(R.id.addContentItem);
 
         contents = new ArrayList<String>();
 
@@ -87,6 +90,17 @@ public class EditBoxActivity extends Activity {
             ((TextView)findViewById(R.id.contents_photo_label)).setVisibility(View.INVISIBLE);
         }
         setupActionBar();
+
+        addContentField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (keyEvent != null && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    addContentButton.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void setupActionBar() {

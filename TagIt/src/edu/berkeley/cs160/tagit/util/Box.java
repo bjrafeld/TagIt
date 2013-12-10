@@ -1,12 +1,18 @@
 package edu.berkeley.cs160.tagit.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -172,4 +178,19 @@ public class Box {
 		Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
 		return bitmap;
 	}
+
+    public static String saveBitmapAt(String fileName, Context context) throws IOException{
+        AssetManager assetManager = context.getAssets();
+        InputStream istr = assetManager.open(fileName);
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        istr.close();
+
+        File outputFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), fileName);
+
+        FileOutputStream out = new FileOutputStream(outputFile);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+        out.close();
+
+        return outputFile.getAbsolutePath();
+    }
 }

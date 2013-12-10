@@ -16,9 +16,12 @@ import edu.berkeley.cs160.tagit.util.Box;
 import edu.berkeley.cs160.tagit.util.BoxContainer;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
+    private boolean DEMO = true;
+
     private ImageButton addBox, search;
     private BoxArrayAdapter adapter;
     private ListView listView;
@@ -36,7 +39,11 @@ public class MainActivity extends Activity {
         addBox.setOnClickListener(actionBarListener);
         search.setOnClickListener(actionBarListener);
 
-        boxes = BoxContainer.getInstance().getBoxes();
+        try {
+            boxes = (DEMO) ? BoxContainer.prePopulatedBoxes(getApplicationContext()) : BoxContainer.getInstance().getBoxes();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         adapter = new BoxArrayAdapter(this, R.layout.box_list_item, boxes);
         listView.setAdapter(adapter);
