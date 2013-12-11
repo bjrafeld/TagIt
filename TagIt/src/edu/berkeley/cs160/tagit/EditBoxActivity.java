@@ -53,7 +53,7 @@ public class EditBoxActivity extends Activity {
 	private ArrayList<String> contents = null;
 	private String tagPicturePath = null, contentsPicturePath = null;
 	
-	private BoxContainer boxContainer = BoxContainer.getInstance();
+	private BoxContainer boxContainer = BoxContainer.getInstance(this);
     private Box box = null;
 	
 	private ImageButton tagImageView;

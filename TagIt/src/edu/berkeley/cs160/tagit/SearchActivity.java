@@ -40,7 +40,7 @@ public class SearchActivity extends Activity {
         listView = (ListView)findViewById(R.id.list_view);
         empty = (TextView)findViewById(R.id.empty);
 
-        boxContainer = BoxContainer.getInstance();
+        boxContainer = BoxContainer.getInstance(this);
 
         bindSearchAction();
     }

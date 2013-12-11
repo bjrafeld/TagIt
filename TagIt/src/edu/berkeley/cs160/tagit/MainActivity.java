@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
-    private boolean DEMO = true;
 
     private ImageButton addBox, search;
     private BoxArrayAdapter adapter;
@@ -40,11 +39,7 @@ public class MainActivity extends Activity {
         addBox.setOnClickListener(actionBarListener);
         search.setOnClickListener(actionBarListener);
 
-        try {
-            boxes = (DEMO) ? BoxContainer.prePopulatedBoxes(getApplicationContext()) : BoxContainer.getInstance().getBoxes();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        boxes = BoxContainer.getInstance(this).getBoxes();
 
         adapter = new BoxArrayAdapter(this, R.layout.box_list_item, boxes);
         listView.setAdapter(adapter);
@@ -135,7 +130,7 @@ public class MainActivity extends Activity {
     public void onActivityResult(int reqCode, int resCode, Intent data) {
         super.onActivityResult(reqCode, resCode, data);
 
-        BoxContainer container = BoxContainer.getInstance();
+        BoxContainer container = BoxContainer.getInstance(this);
         Box b = container.lastBox();
         int id = b.getID();
 

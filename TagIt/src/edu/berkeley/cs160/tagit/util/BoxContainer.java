@@ -20,21 +20,26 @@ public class BoxContainer {
 	
 	private ArrayList<Box> boxes;
 	private static BoxContainer singleton = null;
-	
+
 	/**
 	 * Private constructor for BoxConntainer. Only getBoxContainer should be used
 	 * to access the BoxContainer
 	 */
-	private BoxContainer() {
+	private BoxContainer(Context context) {
 		this.boxes = new ArrayList<Box>();
+        try {
+            this.prePopulatedBoxes(context, this);
+        } catch (Exception e) {
+
+        }
 	}
 	
 	/**
 	 * getBoxContainer() returns the the BoxContainer for the app/
 	 */
-	public static BoxContainer getInstance() {
+	public static BoxContainer getInstance(Context context) {
 		if(singleton == null) {
-			singleton = new BoxContainer();
+			singleton = new BoxContainer(context);
 		}
 		return singleton;
 	}
@@ -53,7 +58,7 @@ public class BoxContainer {
 			contents = new ArrayList<String>();
 		}
 		Box b = new Box(location, contents, tagPicture, contentsPicture);
-		boxes.add(b);
+        boxes.add(b);
 	}
 
     public void updateBox(int id, String location, ArrayList<String> contents, String tagPicture, String contentsPicture) {
@@ -151,18 +156,12 @@ public class BoxContainer {
      * @return Box with highest ID
      */
     public Box lastBox() {
-        if (boxes.isEmpty()) {
+        if (boxes.size() == 0) {
             return null;
+        } else {
+            int lastIndex = boxes.size() - 1;
+            return boxes.get(lastIndex);
         }
-
-        Box last = boxes.get(0);
-        for (Box box : boxes) {
-           if (box.getID() > last.getID()) {
-               last = box;
-           }
-        }
-
-        return last;
     }
 	
 	/**
@@ -178,9 +177,7 @@ public class BoxContainer {
 	 * This class will hold implementation for all Box logic.
 	 */
 
-    public static ArrayList<Box> prePopulatedBoxes(Context context) throws IOException {
-        BoxContainer bc = getInstance();
-
+    public static ArrayList<Box> prePopulatedBoxes(Context context, BoxContainer bc) throws IOException {
         ArrayList contents;
         String contentsPath;
         String tagPath;
@@ -232,7 +229,6 @@ public class BoxContainer {
         contentsPath = Box.saveBitmapAt("balls.jpg", context);
 
         bc.addBox("Garage", contents, tagPath, contentsPath);
-
 
         return bc.getBoxes();
     }
