@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * Date: 11/21/13
  */
 public class BoxContainer {
+    private static boolean DEMO = true;
 	
 	private ArrayList<Box> boxes;
 	private static BoxContainer singleton = null;
@@ -27,10 +28,12 @@ public class BoxContainer {
 	 */
 	private BoxContainer(Context context) {
 		this.boxes = new ArrayList<Box>();
-        try {
-            this.prePopulatedBoxes(context, this);
-        } catch (Exception e) {
-
+        if (DEMO) {
+            try {
+                prePopulatedBoxes(context);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 	}
 	
@@ -177,7 +180,9 @@ public class BoxContainer {
 	 * This class will hold implementation for all Box logic.
 	 */
 
-    public static ArrayList<Box> prePopulatedBoxes(Context context, BoxContainer bc) throws IOException {
+    public ArrayList<Box> prePopulatedBoxes(Context context) throws IOException {
+        BoxContainer bc = this;
+
         ArrayList contents;
         String contentsPath;
         String tagPath;

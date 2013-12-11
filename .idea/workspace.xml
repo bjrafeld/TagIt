@@ -31,15 +31,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3434db0d-df09-4e52-90d8-10a742bad2ee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/util/BoxContainer.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/util/BoxContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/EditBoxActivity.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/EditBoxActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/SearchActivity.java" afterPath="$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/SearchActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TagIt.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386785752100" ignored="false" />
-    <file path="/BoxContainer.java" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386803024555" ignored="false" />
+    <file path="/Dummy.txt" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386803567167" ignored="false" />
+    <file path="/BoxContainer.java" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386803807988" ignored="false" />
     <file path="/MainActivity.java" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386802366156" ignored="false" />
     <file path="/a.dummy" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386801881322" ignored="false" />
     <file path="/fragment.java" changelist="3434db0d-df09-4e52-90d8-10a742bad2ee" time="1386714249612" ignored="false" />
@@ -117,7 +114,7 @@
       <file leaf-file-name="BoxArrayAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/adapter/BoxArrayAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="-6.28">
+            <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -126,7 +123,7 @@
       <file leaf-file-name="PhotoDialogFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/dialog/PhotoDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="70" selection-start="303" selection-end="303" vertical-scroll-proportion="-0.68">
+            <state line="12" column="70" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,11 +132,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="45" selection-start="1203" selection-end="1203" vertical-scroll-proportion="-10.2">
-              <folding>
-                <element signature="e#1772#2078#0" expanded="true" />
-                <element signature="e#2063#2064#0" expanded="true" />
-              </folding>
+            <state line="41" column="45" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,7 +150,7 @@
       <file leaf-file-name="BoxContainer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/util/BoxContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="9" selection-start="703" selection-end="802" vertical-scroll-proportion="0.5409091">
+            <state line="35" column="25" selection-start="903" selection-end="903" vertical-scroll-proportion="0.6686838">
               <folding />
             </state>
           </provider>
@@ -165,7 +159,7 @@
       <file leaf-file-name="EditBoxActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/EditBoxActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="69" selection-start="1627" selection-end="1627" vertical-scroll-proportion="-14.28">
+            <state line="55" column="69" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -174,7 +168,7 @@
       <file leaf-file-name="SearchActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/SearchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="52" selection-start="1281" selection-end="1281" vertical-scroll-proportion="-5.76">
+            <state line="42" column="52" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -408,11 +402,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -453,19 +447,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -491,6 +472,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -601,22 +595,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.68330306" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41292876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32395643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.323049" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27586207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18463181" sideWeight="0.64700544" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18463181" sideWeight="0.64791286" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22086331" sideWeight="0.6723684" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35299456" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3520871" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.032620322" sideWeight="0.5869565" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -624,6 +616,8 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1802139" sideWeight="0.5869565" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.68330306" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -714,9 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/res/layout/activity_search.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="60" selection-start="1245" selection-end="1245" vertical-scroll-proportion="-13.851851">
-          <folding />
-        </state>
+        <state line="22" column="60" selection-start="1245" selection-end="1245" vertical-scroll-proportion="-13.851851" />
       </provider>
       <provider editor-type-id="android-designer">
         <state />
@@ -731,9 +723,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/res/layout/action_bar.xml">
       <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -748,7 +738,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/adapter/BoxArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="-6.28">
+        <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -775,21 +765,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/dialog/PhotoDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="70" selection-start="303" selection-end="303" vertical-scroll-proportion="-0.68">
+        <state line="12" column="70" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/EditBoxActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="69" selection-start="1627" selection-end="1627" vertical-scroll-proportion="-14.28">
+        <state line="55" column="69" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/SearchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="52" selection-start="1281" selection-end="1281" vertical-scroll-proportion="-5.76">
+        <state line="42" column="52" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -803,17 +793,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="45" selection-start="1203" selection-end="1203" vertical-scroll-proportion="-10.2">
-          <folding>
-            <element signature="e#1772#2078#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-          </folding>
+        <state line="41" column="45" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TagIt/src/edu/berkeley/cs160/tagit/util/BoxContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="9" selection-start="703" selection-end="802" vertical-scroll-proportion="0.5409091">
+        <state line="35" column="25" selection-start="903" selection-end="903" vertical-scroll-proportion="0.6686838">
           <folding />
         </state>
       </provider>
