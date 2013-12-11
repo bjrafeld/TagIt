@@ -109,27 +109,13 @@ public class BoxContainer {
 	 * @return
 	 */
 	public ArrayList<Box> searchBoxes(String query) {
-		String[] words = query.split("\\s+");
-		ArrayList<Box> locationsList = new ArrayList<Box>();
-		ArrayList<Box> contentsList = new ArrayList<Box>();
-		boolean duplicateFlag = false;
-		for (String w : words) {
-			for(Box b : getBoxes()) {
-				duplicateFlag = false;
-				if(b.getLocation().equals(w)) {
-					locationsList.add(b);
-					duplicateFlag = true;
-				}
-				if(b.getContents().contains(w) && (!duplicateFlag)) {
-					contentsList.add(b);
-				}
-			}
-		}
-		locationsList.addAll(contentsList);
-		if(locationsList.isEmpty()) {
-			locationsList = null;
-		}
-		return locationsList;
+        ArrayList<Box> matches = new ArrayList<Box>();
+        for (Box box : getBoxes()) {
+            if (box.matchesQuery(query)) {
+                matches.add(box);
+            }
+        }
+        return matches;
 	}
 	
 	/**
@@ -179,7 +165,6 @@ public class BoxContainer {
 	/*
 	 * This class will hold implementation for all Box logic.
 	 */
-
     public ArrayList<Box> prePopulatedBoxes(Context context) throws IOException {
         BoxContainer bc = this;
 
@@ -237,5 +222,4 @@ public class BoxContainer {
 
         return bc.getBoxes();
     }
-	
 }

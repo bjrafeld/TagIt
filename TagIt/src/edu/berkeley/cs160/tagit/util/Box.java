@@ -193,4 +193,31 @@ public class Box {
 
         return outputFile.getAbsolutePath();
     }
+
+    public boolean matchesQuery(String query) {
+        String[] queryWords = query.split("\\s+");
+        String[] locationWords = location.split("\\s+");
+
+        ArrayList<String> contentsWordList = new ArrayList<String>();
+        for (String content : contents) {
+            String[] words = content.split("\\s+");
+            for (String w : words) {
+                contentsWordList.add(w);
+            }
+        }
+        String[] contentsWords = (String[]) contentsWordList.toArray(new String[contentsWordList.size()]);
+        return caseInsensitiveUnion(queryWords, locationWords)
+                || caseInsensitiveUnion(queryWords, contentsWords);
+    }
+
+    private boolean caseInsensitiveUnion(String[] listA, String[] listB){
+        for (String a : listA) {
+            for (String b : listB) {
+                if (a.equalsIgnoreCase(b)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
